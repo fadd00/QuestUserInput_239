@@ -94,9 +94,9 @@ fun FormDataDiri(modifier: Modifier = Modifier) {
                 nama = textNama
                 alamat = textAlamat
                 jenis = textJK
-            }{
-                Text(stringResource(R.string.submit))
             }
+                Text(stringResource(R.string.submit))
+            
         )
     }
 }
