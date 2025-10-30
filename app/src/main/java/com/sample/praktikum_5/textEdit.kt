@@ -1,8 +1,12 @@
 package com.sample.praktikum_5
 
+import android.R.attr.text
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.selection.selectable
+import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Text
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import java.text.Normalizer
 
@@ -41,11 +45,20 @@ fun FormDataDiri(modifier: Modifier
                     onClick = { textJK = item }
                 ),verticalAlignment = Alignment.CenterVertically{
                     RadioButton(selected = textJK == item,
-                        onClick = { textJK = item }
-                    )
+                        onClick = { textJK = item
+                        }
+                    )text(item)
                 }
-                ) {
-
+                    outlinedTextField(
+                        values = textAlamat,
+                        singleLine = true,
+                        modifier = Modifier.width(250.dp),
+                        label = { Text(text = "Alamat lengkap") },
+                        onValueChange = {
+                            textAlamat = it
+                        }
+                    )
+                {}
             }
         }
     }
