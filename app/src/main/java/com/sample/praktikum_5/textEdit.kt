@@ -1,6 +1,8 @@
 package com.sample.praktikum_5
 
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.selection.selectable
+import androidx.compose.material3.Text
 import androidx.compose.ui.Modifier
 import java.text.Normalizer
 
@@ -21,8 +23,7 @@ fun FormDataDiri(modifier: Modifier
 
     Column(modifier = modifier.padding(top = 50.dp),
         verticalArrangement = Arrangement.Top,
-        horizontalAlignment = Alignment.CenterHorizontally
-    )
+        horizontalAlignment = Alignment.CenterHorizontally)
     {
         outlinedTextField(
             value = textNama,
@@ -30,7 +31,22 @@ fun FormDataDiri(modifier: Modifier
             shape = Modifier.width(250.dp),
             label = { Text(text = "Nama") },
             onValueChange = {
-
+                textNama = it
+            }
         )
+        row{
+            gender.forEach { item ->
+                Row(modifier = Modifier.selectable(
+                    selected = textJK == item,
+                    onClick = { textJK = item }
+                ),verticalAlignment = Alignment.CenterVertically{
+                    RadioButton(selected = textJK == item,
+                        onClick = { textJK = item }
+                    )
+                }
+                ) {
+
+            }
+        }
     }
 }
