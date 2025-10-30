@@ -17,4 +17,8 @@ fun FormDataDiri(modifier: Modifier
     var jenis by remember { mutableStateOf("") }
 
     val gender:list<String> = listOf("Laki-laki","Perempuan")
+
+    Column(modifier = modifier.padding(top = 50.dp),
+        verticalArrangement = Arrangement.Top,
+    )
 }
