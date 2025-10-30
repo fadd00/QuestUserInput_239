@@ -86,5 +86,14 @@ fun FormDataDiri(modifier: Modifier = Modifier) {
             thickness = dimensionResource( id = R.dimen.divider_tipis),
             color = Color.darkGray
         )
+        button(
+            modifier = Modifier.fillMaxWidth(),
+            enable = textAlamat.isNotEmpty(),
+            onClick = {
+                nama = textNama
+                alamat = textAlamat
+                jenis = textJK
+            }
+        )
     }
 }
