@@ -1,65 +1,87 @@
 package com.sample.praktikum_5
 
-import android.R.attr.text
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.selection.selectable
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import java.text.Normalizer
+import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.unit.dp
 
-@composable
-fun FormDataDiri(modifier: Modifier
-){
-    //variable - variable untuk mengingat nilai masukan dari keyboard
+@Composable
+fun FormDataDiri(modifier: Modifier = Modifier) {
+    // Variable-variable untuk mengingat nilai masukan dari keyboard
     var textNama by remember { mutableStateOf("") }
     var textAlamat by remember { mutableStateOf("") }
     var textJK by remember { mutableStateOf("") }
 
-    //variable -variable untuk menyimpan data yang diperoleh dari komponer
+    // Variable-variable untuk menyimpan data yang diperoleh dari komponen
     var nama by remember { mutableStateOf("") }
     var alamat by remember { mutableStateOf("") }
     var jenis by remember { mutableStateOf("") }
 
-    val gender:list<String> = listOf("Laki-laki","Perempuan")
+    val gender: List<String> = listOf("Laki-laki", "Perempuan")
 
-    Column(modifier = modifier.padding(top = 50.dp),
+    Column(
+        modifier = modifier.padding(top = 50.dp),
         verticalArrangement = Arrangement.Top,
-        horizontalAlignment = Alignment.CenterHorizontally)
-    {
-        outlinedTextField(
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        OutlinedTextField(
             value = textNama,
             singleLine = true,
-            shape = Modifier.width(250.dp),
+            modifier = Modifier.width(250.dp),
             label = { Text(text = "Nama") },
             onValueChange = {
                 textNama = it
             }
         )
-        row{
+
+        Row {
             gender.forEach { item ->
-                Row(modifier = Modifier.selectable(
-                    selected = textJK == item,
-                    onClick = { textJK = item }
-                ),verticalAlignment = Alignment.CenterVertically{
-                    RadioButton(selected = textJK == item,
-                        onClick = { textJK = item
-                        }
-                    )text(item)
-                }
-                    outlinedTextField(
-                        values = textAlamat,
-                        singleLine = true,
-                        modifier = Modifier.width(250.dp),
-                        label = { Text(text = "Alamat lengkap") },
-                        onValueChange = {
-                            textAlamat = it
-                        }
+                Row(
+                    modifier = Modifier.selectable(
+                        selected = textJK == item,
+                        onClick = { textJK = item }
+                    ),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    RadioButton(
+                        selected = textJK == item,
+                        onClick = { textJK = item }
                     )
-                {}
+                    Text(item)
+                }
             }
         }
+
+        OutlinedTextField(
+            value = textAlamat,
+            singleLine = true,
+            modifier = Modifier.width(250.dp),
+            label = { Text(text = "Alamat lengkap") },
+            onValueChange = {
+                textAlamat = it
+            }
+        )
+
+        HorizontalDivider(
+            modifier = Modifier.padding(
+                bottom = dimensionResource(R.dimen.padding_medium),
+                top = dimensionResource(R.dimen.padding_medium)
+            )
+        )
     }
 }
