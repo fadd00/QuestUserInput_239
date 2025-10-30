@@ -1,5 +1,6 @@
 package com.sample.praktikum_5
 
+import androidx.compose.foundation.layout.width
 import androidx.compose.ui.Modifier
 import java.text.Normalizer
 
@@ -20,5 +21,16 @@ fun FormDataDiri(modifier: Modifier
 
     Column(modifier = modifier.padding(top = 50.dp),
         verticalArrangement = Arrangement.Top,
+        horizontalAlignment = Alignment.CenterHorizontally
     )
+    {
+        outlinedTextField(
+            value = textNama,
+            singleLine = true,
+            shape = Modifier.width(250.dp),
+            label = { Text(text = "Nama") },
+            onValueChange = {
+
+        )
+    }
 }
