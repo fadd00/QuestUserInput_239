@@ -32,6 +32,6 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun FormDataDiriPreview() {
     Praktikum5Theme {
-        FormDataDiri()
+        FormDataDiri(modifier = Modifier)
     }
 }
